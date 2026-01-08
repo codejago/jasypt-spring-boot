@@ -1,13 +1,11 @@
 dist: trusty
 language: java
 jdk:
-  - openjdk8
-  - openjdk11
-  - openjdk12
+  - openjdk21
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/754eed67f5ed5a0c5de5
+      - https://webhooks.gitter.im/e/your-webhook-url
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false

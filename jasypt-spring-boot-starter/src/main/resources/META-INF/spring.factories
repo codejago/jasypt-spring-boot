@@ -1,3 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.ulisesbocchio.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration
-
-org.springframework.cloud.bootstrap.BootstrapConfiguration=com.ulisesbocchio.jasyptspringbootstarter.JasyptSpringCloudBootstrapConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.codejago.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration

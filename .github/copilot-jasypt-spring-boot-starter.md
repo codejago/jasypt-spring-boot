@@ -2,7 +2,7 @@
 
 This module is the “wiring” layer. Adding the starter to an application should:
 - import the core configuration (`EnableEncryptablePropertiesConfiguration`)
-- expose the right Spring Boot and Spring Cloud metadata so enabling works automatically
+- expose the right Spring Boot metadata so enabling works automatically
 
 ---
 
@@ -11,11 +11,10 @@ This module is the “wiring” layer. Adding the starter to an application shou
 These files are part of the starter’s contract. If you rename/move classes, update them together.
 
 - `jasypt-spring-boot-starter/src/main/resources/META-INF/spring.factories`
-  - `EnableAutoConfiguration=com.ulisesbocchio.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration`
-  - `BootstrapConfiguration=com.ulisesbocchio.jasyptspringbootstarter.JasyptSpringCloudBootstrapConfiguration`
+  - `EnableAutoConfiguration=com.codejago.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration`
 
 - `jasypt-spring-boot-starter/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`
-  - `com.ulisesbocchio.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration`
+  - `com.codejago.jasyptspringbootstarter.JasyptSpringBootAutoConfiguration`
 
 ---
 
@@ -23,11 +22,6 @@ These files are part of the starter’s contract. If you rename/move classes, up
 
 ### Boot auto-configuration
 - `JasyptSpringBootAutoConfiguration`
-  - `@Import(EnableEncryptablePropertiesConfiguration.class)`
-
-### Spring Cloud bootstrap configuration
-- `JasyptSpringCloudBootstrapConfiguration`
-  - `@ConditionalOnProperty(name = "jasypt.encryptor.bootstrap", havingValue = "true", matchIfMissing = true)`
   - `@Import(EnableEncryptablePropertiesConfiguration.class)`
 
 This means:
@@ -46,21 +40,12 @@ With the starter on the classpath:
 ### Actuator stability
 - `/actuator/env` must remain accessible (should not error due to wrapped property sources)
 
-### Spring Cloud bootstrap behavior
-When `spring.cloud.bootstrap.enabled=true`:
-- encrypted values in `bootstrap.properties` must decrypt during the bootstrap phase if `jasypt.encryptor.bootstrap=true`
-
 ---
 
 ## 4) Tests-as-spec (use these as the living documentation)
 
 ### Bootstrap-phase behavior
 - `BootstrappingJasyptConfigurationTest`
-  - Asserts the “real bug” scenario and the fix:
-    - with `spring.cloud.bootstrap.enabled=true` and `jasypt.encryptor.bootstrap=false`
-      - the environment property is *not* decrypted during bootstrap listener timing
-    - with `spring.cloud.bootstrap.enabled=true` and `jasypt.encryptor.bootstrap=true`
-      - the environment property *is* decrypted during bootstrap listener timing
   - Also asserts `EnableEncryptablePropertiesBeanFactoryPostProcessor` exists in both bootstrap-enabled and disabled paths.
 
 ### Environment + @Value decryption + actuator env

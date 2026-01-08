@@ -6,7 +6,7 @@ It works by:
 1) building a `StringEncryptor` + detector/resolver/filter (lazy by default)
 2) converting `PropertySource` instances into encryptable wrappers (or proxies)
 3) optionally converting the `MutablePropertySources` container itself
-4) ensuring **bootstrap (Spring Cloud)** and **logging initialization** see decrypted values early enough
+4) ensuring **logging initialization** see decrypted values early enough
 
 ---
 
@@ -15,10 +15,10 @@ It works by:
 ### Metadata wiring (must remain intact)
 - `jasypt-spring-boot/src/main/resources/META-INF/spring.factories`
   - `org.springframework.context.ApplicationListener`:
-    - `com.ulisesbocchio.jasyptspringboot.configuration.BootstrapSpringApplicationListener`
+    - `com.codejago.jasyptspringboot.configuration.BootstrapSpringApplicationListener`
   - `org.springframework.boot.env.EnvironmentPostProcessor`:
-    - `com.ulisesbocchio.jasyptspringboot.configuration.EncryptableLoggingEnvironmentListener`
-    - `com.ulisesbocchio.jasyptspringboot.configuration.EncryptableSystemEnvironmentPropertySourceWrapperGetSourceWrapperEnvironmentListener`
+    - `com.codejago.jasyptspringboot.configuration.EncryptableLoggingEnvironmentListener`
+    - `com.codejago.jasyptspringboot.configuration.EncryptableSystemEnvironmentPropertySourceWrapperGetSourceWrapperEnvironmentListener`
 
 ### Bootstrap detection + bootstrapping
 - `configuration/BootstrapSpringApplicationListener`
@@ -110,7 +110,6 @@ Also documented at the metadata layer:
 ## 4) Invariants (things you should not break)
 
 ### Bootstrap + logging correctness
-- In a Spring Cloud bootstrap environment (presence of `bootstrap` property source), encrypted values must be decryptable early.
 - Logging must be reinitialized after wrapping so that encrypted values used by logging config don’t leak into the logging system as ciphertext.
 
 ### Compatibility with Spring Boot environment internals
@@ -129,14 +128,14 @@ The following are effectively public contracts:
 
 ## 5) Tests-as-spec (keep these green, extend them when changing behavior)
 
-- `src/test/java/com/ulisesbocchio/jasyptspringboot/EncryptorTest`
+- `src/test/java/com/codejago/jasyptspringboot/EncryptorTest`
   - acts as a spec for supported encryptor modes:
     - PBE (default algorithm)
     - asymmetric DER/PEM (file/resource/string)
     - GCM (secret key, key location, password-derived, pooled)
   - note: the test prints encrypted material; avoid adding anything that prints *decrypted secrets* beyond what exists.
 
-- `src/test/java/com/ulisesbocchio/jasyptspringboot/filter/DefaultPropertyFilterTest`
+- `src/test/java/com/codejago/jasyptspringboot/filter/DefaultPropertyFilterTest`
   - defines the include/exclude semantics and the regex matching behavior
   - also exercises generic type assignability helpers used by wrappers
 

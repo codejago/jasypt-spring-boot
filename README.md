@@ -3,17 +3,17 @@
 
 **Requirements:** Java 17+ and Spring Boot 3.5+
 
-[![Build Status](https://app.travis-ci.com/ulisesbocchio/jasypt-spring-boot.svg?branch=master)](https://app.travis-ci.com/ulisesbocchio/jasypt-spring-boot)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ulisesbocchio/jasypt-spring-boot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://app.travis-ci.com/codejago/jasypt-spring-boot.svg?branch=master)](https://app.travis-ci.com/codejago/jasypt-spring-boot)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/codejago/jasypt-spring-boot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codejago/jasypt-spring-boot/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.codejago/jasypt-spring-boot)
 
 
-[![Code Climate](https://codeclimate.com/github/rsercano/mongoclient/badges/gpa.svg)](https://codeclimate.com/github/ulisesbocchio/jasypt-spring-boot)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a75fc4e1d3f480f811b5339202400b5)](https://www.codacy.com/app/ulisesbocchio/jasypt-spring-boot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ulisesbocchio/jasypt-spring-boot&amp;utm_campaign=Badge_Grade)
-[![GitHub release](https://img.shields.io/github/release/ulisesbocchio/jasypt-spring-boot.svg)](https://github.com/ulisesbocchio/jasypt-spring-boot)
-[![Github All Releases](https://img.shields.io/github/downloads/ulisesbocchio/jasypt-spring-boot/total.svg)](https://github.com/ulisesbocchio/jasypt-spring-boot)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/ulisesbocchio/jasypt-spring-boot/blob/master/LICENSE)
-[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/ulisesbocchio/jasypt-spring-boot)
+[![Code Climate](https://codeclimate.com/github/rsercano/mongoclient/badges/gpa.svg)](https://codeclimate.com/github/codejago/jasypt-spring-boot)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6a75fc4e1d3f480f811b5339202400b5)](https://www.codacy.com/app/codejago/jasypt-spring-boot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codejago/jasypt-spring-boot&amp;utm_campaign=Badge_Grade)
+[![GitHub release](https://img.shields.io/github/release/codejago/jasypt-spring-boot.svg)](https://github.com/codejago/jasypt-spring-boot)
+[![Github All Releases](https://img.shields.io/github/downloads/codejago/jasypt-spring-boot/total.svg)](https://github.com/codejago/jasypt-spring-boot)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/codejago/jasypt-spring-boot/blob/master/LICENSE)
+[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/codejago/jasypt-spring-boot)
 
 [![Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9J2V5HJT8AZF8)
 
@@ -26,7 +26,7 @@ There are 3 ways to integrate `jasypt-spring-boot` in your project:
 - Adding `jasypt-spring-boot` to your classpath and adding `@EnableEncryptableProperties` to your main Configuration class to enable encryptable properties across the entire Spring Environment
 - Adding `jasypt-spring-boot` to your classpath and declaring individual encryptable property sources with `@EncryptablePropertySource`
 ## What's new?
-### Go to [Releases](https://github.com/ulisesbocchio/jasypt-spring-boot/releases)
+### Go to [Releases](https://github.com/codejago/jasypt-spring-boot/releases)
 ## What to do First?
 Use one of the following 3 methods (briefly explained above):
 
@@ -399,8 +399,6 @@ from a config server the properties need to be refreshed when they changed. For 
 `RefreshScopeRefreshedEventListener` that listens to the following events by default to clear the encrypted properties cache:
 ```java
 public static final List<String> EVENT_CLASS_NAMES = Arrays.asList(
-            "org.springframework.cloud.context.scope.refresh.RefreshScopeRefreshedEvent",
-            "org.springframework.cloud.context.environment.EnvironmentChangeEvent",
             "org.springframework.boot.web.servlet.context.ServletWebServerInitializedEvent"
     );
 ```
@@ -580,7 +578,7 @@ mvn jasypt:encrypt -Djasypt.plugin.path="file:src/main/resources/application.yam
 You can override any spring config you support in your application when running the plugin, for instance selecting a given spring profile:
  
 ```bash
-mvn jasypt:encrypt -Dspring.profiles.active=cloud -Djasypt.encryptor.password="the password" 
+mvn jasypt:encrypt -Djasypt.encryptor.password="the password" 
 ```
 ### Multi-module maven projects
 To encrypt/decrypt properties in multi-module projects disable recursion with `-N` or `--non-recursive` on the maven command:
@@ -688,8 +686,8 @@ your properties:
 #### DER Format
 
 ```java
-import com.ulisesbocchio.jasyptspringboot.encryptor.SimpleAsymmetricConfig;
-import com.ulisesbocchio.jasyptspringboot.encryptor.SimpleAsymmetricStringEncryptor;
+import com.codejago.jasyptspringboot.encryptor.SimpleAsymmetricConfig;
+import com.codejago.jasyptspringboot.encryptor.SimpleAsymmetricStringEncryptor;
 import org.jasypt.encryption.StringEncryptor;
 
 public class PropertyEncryptor {
@@ -707,10 +705,10 @@ public class PropertyEncryptor {
 #### PEM Format
 
 ```java
-import com.ulisesbocchio.jasyptspringboot.encryptor.SimpleAsymmetricConfig;
-import com.ulisesbocchio.jasyptspringboot.encryptor.SimpleAsymmetricStringEncryptor;
+import com.codejago.jasyptspringboot.encryptor.SimpleAsymmetricConfig;
+import com.codejago.jasyptspringboot.encryptor.SimpleAsymmetricStringEncryptor;
 import org.jasypt.encryption.StringEncryptor;
-import static com.ulisesbocchio.jasyptspringboot.util.AsymmetricCryptography.KeyFormat.PEM;
+import static com.codejago.jasyptspringboot.util.AsymmetricCryptography.KeyFormat.PEM;
 
 public class PropertyEncryptor {
     public static void main(String[] args) {
@@ -786,8 +784,8 @@ public StringEncryptor stringEncryptor() {
 ### Encrypting properties with AES GCM-256
 You can use the [Maven Plugin](#maven-plugin) or follow a similar strategy as explained in [Asymmetric Encryption](#asymmetric-encryption)'s [Encrypting Properties](#encrypting-properties) 
 ## Demo App
-The [jasypt-spring-boot-demo-samples](https://github.com/ulisesbocchio/jasypt-spring-boot-samples) repo contains working Spring Boot app examples.
-The main [jasypt-spring-boot-demo](https://github.com/ulisesbocchio/jasypt-spring-boot-samples/tree/master/jasypt-spring-boot-demo) Demo app explicitly sets a System property with the encryption password before the app runs.
+The [jasypt-spring-boot-demo-samples](https://github.com/codejago/jasypt-spring-boot-samples) repo contains working Spring Boot app examples.
+The main [jasypt-spring-boot-demo](https://github.com/codejago/jasypt-spring-boot-samples/tree/master/jasypt-spring-boot-demo) Demo app explicitly sets a System property with the encryption password before the app runs.
 To have a little more realistic scenario try removing the line where the system property is set, build the app with maven, and the run:
 
 ```
@@ -821,8 +819,8 @@ JASYPT_ENCRYPTOR_PASSWORD=password java -jar target/jasypt-spring-boot-demo-1.5-
 **Note:** When using Gradle as build tool, processResources task fails because of '$' character, to solve this you just need to scape this variable like this '\\$'.
 
 ## Other Demo Apps
-While [jasypt-spring-boot-demo](https://github.com/ulisesbocchio/jasypt-spring-boot-samples/tree/master/jasypt-spring-boot-demo) is a comprehensive Demo that showcases all possible ways to encrypt/decrypt properties, there are other multiple Demos that demo isolated scenarios. 
+While [jasypt-spring-boot-demo](https://github.com/codejago/jasypt-spring-boot-samples/tree/master/jasypt-spring-boot-demo) is a comprehensive Demo that showcases all possible ways to encrypt/decrypt properties, there are other multiple Demos that demo isolated scenarios. 
 
 [//]: # (## Flattr)
 
-[//]: # ([![Flattr this git repo]&#40;http://api.flattr.com/button/flattr-badge-large.png&#41;]&#40;https://flattr.com/@ubocchio/github/ulisesbocchio&#41;)
+[//]: # ([![Flattr this git repo]&#40;http://api.flattr.com/button/flattr-badge-large.png&#41;]&#40;https://flattr.com/@ubocchio/github/codejago&#41;)

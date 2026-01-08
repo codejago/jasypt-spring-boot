@@ -41,7 +41,7 @@ jobs:
       if: github.event_name == 'push'
       uses: actions/checkout@v4
       with:
-        repository: ulisesbocchio/jasypt-spring-boot-samples
+        repository: codejago/jasypt-spring-boot-samples
         path: jasypt-spring-boot-samples
         ref: ${{ steps.extract_branch.outputs.branch }}
         token: ${{ secrets.CHECKOUT_PAT }}
@@ -51,7 +51,7 @@ jobs:
       if: github.event_name == 'push' && steps.checkout_samples_branch.outcome == 'failure'
       uses: actions/checkout@v4
       with:
-        repository: ulisesbocchio/jasypt-spring-boot-samples
+        repository: codejago/jasypt-spring-boot-samples
         path: jasypt-spring-boot-samples
         ref: master
         token: ${{ secrets.CHECKOUT_PAT }}
@@ -61,7 +61,7 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: actions/checkout@v4
       with:
-        repository: ulisesbocchio/jasypt-spring-boot-samples
+        repository: codejago/jasypt-spring-boot-samples
         path: jasypt-spring-boot-samples
         ref: master
 
