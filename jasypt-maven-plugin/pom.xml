@@ -4,8 +4,8 @@
 
     <parent>
         <artifactId>jasypt-spring-boot-parent</artifactId>
-        <groupId>com.github.ulisesbocchio</groupId>
-        <version>4.0.4-SNAPSHOT</version>
+        <groupId>com.codejago</groupId>
+        <version>5.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>jasypt-maven-plugin</artifactId>
@@ -21,7 +21,7 @@
     <dependencies>
         <!-- Exclude logback and log4j in favor of slf4j-simple to keep plugin lightweight -->
         <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
+            <groupId>com.codejago</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>

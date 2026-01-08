@@ -22,7 +22,7 @@ Add the plugin to your `pom.xml`:
 <build>
   <plugins>
     <plugin>
-      <groupId>com.github.ulisesbocchio</groupId>
+      <groupId>com.codejago</groupId>
       <artifactId>jasypt-maven-plugin</artifactId>
       <version>4.0.0-SNAPSHOT</version>
     </plugin>

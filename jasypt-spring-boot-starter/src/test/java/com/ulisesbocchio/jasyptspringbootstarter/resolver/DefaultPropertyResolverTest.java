@@ -1,6 +1,7 @@
 package com.ulisesbocchio.jasyptspringbootstarter.resolver;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
+import org.springframework.boot.restclient.RestTemplateBuilder;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -31,8 +31,10 @@ class TestApp {
 }
 @SpringBootTest(
         properties = {
-                "spring.config.use-legacy-processing=true",
-                "server.port=9625"
+                "server.port=9625",
+                "management.endpoints.web.exposure.include=env",
+                "management.endpoint.env.enabled=true",
+                "spring.config.import=classpath:bootstrap.properties"
         },
         classes = TestApp.class,
         webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
@@ -70,11 +72,6 @@ class DefaultPropertyResolverTest {
         @Override
         default boolean hasError(ClientHttpResponse response) throws IOException {
             return false; // Don't handle errors by default
-        }
-
-        @Override
-        default void handleError(ClientHttpResponse response) throws IOException {
-            // Do nothing by default
         }
 
         @Override

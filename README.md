@@ -5,7 +5,7 @@
 
 [![Build Status](https://app.travis-ci.com/ulisesbocchio/jasypt-spring-boot.svg?branch=master)](https://app.travis-ci.com/ulisesbocchio/jasypt-spring-boot)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ulisesbocchio/jasypt-spring-boot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.ulisesbocchio/jasypt-spring-boot/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.github.ulisesbocchio/jasypt-spring-boot)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.codejago/jasypt-spring-boot/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.codejago/jasypt-spring-boot)
 
 
 [![Code Climate](https://codeclimate.com/github/rsercano/mongoclient/badges/gpa.svg)](https://codeclimate.com/github/ulisesbocchio/jasypt-spring-boot)
@@ -34,7 +34,7 @@ Use one of the following 3 methods (briefly explained above):
 
 	```xml
     <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
+            <groupId>com.codejago</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>4.0.3</version>
     </dependency>
@@ -43,7 +43,7 @@ Use one of the following 3 methods (briefly explained above):
 	
 	```xml
     <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
+            <groupId>com.codejago</groupId>
             <artifactId>jasypt-spring-boot</artifactId>
             <version>4.0.3</version>
     </dependency>
@@ -64,7 +64,7 @@ Use one of the following 3 methods (briefly explained above):
 	
 	```xml
     <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
+            <groupId>com.codejago</groupId>
             <artifactId>jasypt-spring-boot</artifactId>
             <version>4.0.3</version>
     </dependency>
@@ -420,7 +420,7 @@ To use the plugin, just add the following to your pom.xml:
 <build>
   <plugins>
     <plugin>
-      <groupId>com.github.ulisesbocchio</groupId>
+      <groupId>com.codejago</groupId>
       <artifactId>jasypt-maven-plugin</artifactId>
       <version>4.0.3</version>
     </plugin>
