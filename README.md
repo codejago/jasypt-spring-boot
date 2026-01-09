@@ -1,6 +1,13 @@
 # jasypt-spring-boot
 **[Jasypt](http://www.jasypt.org)** integration for Spring Boot 3.5+
 
+## Simplified Scope
+This repository has been reduced to the essentials that power the `@EnableEncryptableProperties`
+workflow. Property sources are decorated during application bootstrap and any value wrapped with
+`ENC(...)` (or the configured prefix/suffix) is transparently decrypted. All previous auxiliary
+features (caching hooks, logging listeners, Maven plugin notes, etc.) have been removed in favour
+of a leaner code base that focuses solely on property decryption when the annotation is present.
+
 **Requirements:** Java 17+ and Spring Boot 3.5+
 
 [![Build Status](https://app.travis-ci.com/codejago/jasypt-spring-boot.svg?branch=master)](https://app.travis-ci.com/codejago/jasypt-spring-boot)

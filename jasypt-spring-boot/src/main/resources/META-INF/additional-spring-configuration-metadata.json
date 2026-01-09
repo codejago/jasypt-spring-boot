@@ -1,9 +1,0 @@
-{
-  "groups": [
-    {
-      "name": "jasypt.encryptor",
-      "type": "com.codejago.jasyptspringboot.properties.JasyptEncryptorConfigurationProperties",
-      "sourceType": "com.codejago.jasyptspringboot.properties.JasyptEncryptorConfigurationProperties"
-    }
-  ]
-}

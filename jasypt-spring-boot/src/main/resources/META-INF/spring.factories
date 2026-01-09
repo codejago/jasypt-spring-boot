@@ -1,3 +1,0 @@
-org.springframework.boot.EnvironmentPostProcessor=\
-com.codejago.jasyptspringboot.configuration.EncryptableLoggingEnvironmentListener,\
-com.codejago.jasyptspringboot.configuration.EncryptableSystemEnvironmentPropertySourceWrapperGetSourceWrapperEnvironmentListener
