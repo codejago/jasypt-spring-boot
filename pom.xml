@@ -47,22 +47,11 @@
 
     <developers>
         <developer>
-            <name>Ulises Bocchio</name>
+            <name>Matthew Hogan</name>
             <url>https://github.com/codejago</url>
             <id>codejago</id>
         </developer>
     </developers>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>central</id>
-            <url>https://central.sonatype.com/</url>
-        </snapshotRepository>
-        <repository>
-            <id>central</id>
-            <url>https://central.sonatype.com/</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
