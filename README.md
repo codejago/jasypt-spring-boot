@@ -35,7 +35,7 @@ If you are using Spring Boot Auto-Configuration (standard for most apps), add th
 <dependency>
     <groupId>com.codejago</groupId>
     <artifactId>jasypt-spring-boot-starter</artifactId>
-    <version>5.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ Alternatively, for manual control, use the core library:
 <dependency>
     <groupId>com.codejago</groupId>
     <artifactId>jasypt-spring-boot</artifactId>
-    <version>5.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
