@@ -16,7 +16,7 @@ values in your configuration files with `ENC(...)` and have them transparently d
 - **Java 21+ & Spring Boot 4.x:** Optimized for modern Java ecosystems.
 - **Transparent Decryption:** Automatically decorates Spring `PropertySource` objects to handle encrypted values.
 
-Based on the excellent [jasypt-spring-boot](https://github.com/ulisesbocchio/jasypt-spring-boot) library by [](https://github.com/ulisesbocchio).
+Based on the excellent [jasypt-spring-boot](https://github.com/ulisesbocchio/jasypt-spring-boot) library by [Ulises Bocchio](https://github.com/ulisesbocchio).
 Simplified for a specific use case (Spring Boot only) and updated for Spring Boot 4.x and JDK21.
 
 ---
