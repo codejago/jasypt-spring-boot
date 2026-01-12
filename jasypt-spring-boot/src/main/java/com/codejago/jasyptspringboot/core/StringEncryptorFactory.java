@@ -23,9 +23,9 @@ public final class StringEncryptorFactory {
         config.setKeyObtentionIterations(Integer.toString(settings.getKeyObtentionIterations()));
         config.setPoolSize(Integer.toString(settings.getPoolSize()));
         config.setStringOutputType(settings.getStringOutputType());
-        config.setProviderName("SunJCE");
-        config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");
-        config.setIvGeneratorClassName("org.jasypt.iv.RandomIvGenerator");
+        config.setProviderName(settings.getProviderName());
+        config.setSaltGeneratorClassName(settings.getSaltGeneratorClassName());
+        config.setIvGeneratorClassName(settings.getIvGeneratorClassName());
 
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         encryptor.setConfig(config);

@@ -14,6 +14,9 @@ public final class EncryptionSettings {
     private final String stringOutputType;
     private final String propertyPrefix;
     private final String propertySuffix;
+    private final String providerName;
+    private final String saltGeneratorClassName;
+    private final String ivGeneratorClassName;
 
     private EncryptionSettings(
             String password,
@@ -22,7 +25,10 @@ public final class EncryptionSettings {
             int poolSize,
             String stringOutputType,
             String propertyPrefix,
-            String propertySuffix
+            String propertySuffix,
+            String providerName,
+            String saltGeneratorClassName,
+            String ivGeneratorClassName
     ) {
         this.password = password;
         this.algorithm = algorithm;
@@ -31,6 +37,9 @@ public final class EncryptionSettings {
         this.stringOutputType = stringOutputType;
         this.propertyPrefix = propertyPrefix;
         this.propertySuffix = propertySuffix;
+        this.providerName = providerName;
+        this.saltGeneratorClassName = saltGeneratorClassName;
+        this.ivGeneratorClassName = ivGeneratorClassName;
     }
 
     public static EncryptionSettings from(ConfigurableEnvironment environment) {
@@ -41,8 +50,11 @@ public final class EncryptionSettings {
         String outputType = environment.getProperty("jasypt.encryptor.string-output-type", "base64");
         String prefix = environment.getProperty("jasypt.encryptor.property.prefix", "ENC(");
         String suffix = environment.getProperty("jasypt.encryptor.property.suffix", ")");
+        String providerName = environment.getProperty("jasypt.encryptor.provider-name", "SunJCE");
+        String saltGen = environment.getProperty("jasypt.encryptor.salt-generator-classname", "org.jasypt.salt.RandomSaltGenerator");
+        String ivGen = environment.getProperty("jasypt.encryptor.iv-generator-classname", "org.jasypt.iv.RandomIvGenerator");
 
-        return new EncryptionSettings(password, algorithm, iterations, poolSize, outputType, prefix, suffix);
+        return new EncryptionSettings(password, algorithm, iterations, poolSize, outputType, prefix, suffix, providerName, saltGen, ivGen);
     }
 
     public boolean hasPassword() {
@@ -75,5 +87,17 @@ public final class EncryptionSettings {
 
     public String getPropertySuffix() {
         return propertySuffix;
+    }
+
+    public String getProviderName() {
+        return providerName;
+    }
+
+    public String getSaltGeneratorClassName() {
+        return saltGeneratorClassName;
+    }
+
+    public String getIvGeneratorClassName() {
+        return ivGeneratorClassName;
     }
 }

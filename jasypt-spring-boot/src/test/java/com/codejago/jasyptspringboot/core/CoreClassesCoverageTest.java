@@ -73,6 +73,28 @@ class CoreClassesCoverageTest {
         assertThat(settings.getStringOutputType()).isEqualTo("base64");
         assertThat(settings.getPropertyPrefix()).isEqualTo("ENC(");
         assertThat(settings.getPropertySuffix()).isEqualTo(")");
+        assertThat(settings.getProviderName()).isEqualTo("SunJCE");
+        assertThat(settings.getSaltGeneratorClassName()).isEqualTo("org.jasypt.salt.RandomSaltGenerator");
+        assertThat(settings.getIvGeneratorClassName()).isEqualTo("org.jasypt.iv.RandomIvGenerator");
+    }
+
+    @Test
+    void encryptionSettings_readsCustomGenerators() {
+        MockEnvironment env = new MockEnvironment()
+                .withProperty("jasypt.encryptor.password", "pwd")
+                .withProperty("jasypt.encryptor.algorithm", "PBEWithMD5AndTripleDES")
+                .withProperty("jasypt.encryptor.key-obtention-iterations", "1000")
+                .withProperty("jasypt.encryptor.string-output-type", "base64")
+                .withProperty("jasypt.encryptor.pool-size", "1")
+                .withProperty("jasypt.encryptor.provider-name", "SunJCE")
+                .withProperty("jasypt.encryptor.salt-generator-classname", "org.jasypt.salt.ZeroSaltGenerator")
+                .withProperty("jasypt.encryptor.iv-generator-classname", "org.jasypt.iv.NoIvGenerator");
+
+        EncryptionSettings settings = EncryptionSettings.from(env);
+
+        assertThat(settings.getProviderName()).isEqualTo("SunJCE");
+        assertThat(settings.getSaltGeneratorClassName()).isEqualTo("org.jasypt.salt.ZeroSaltGenerator");
+        assertThat(settings.getIvGeneratorClassName()).isEqualTo("org.jasypt.iv.NoIvGenerator");
     }
     
     @Test
