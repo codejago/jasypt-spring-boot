@@ -29,3 +29,10 @@ target
 # IntelliJ
 .idea/
 *.iml
+
+# Maven
+mvnw.cmd
+.mvn/
+
+# Visual Studio Code
+.vscode/
