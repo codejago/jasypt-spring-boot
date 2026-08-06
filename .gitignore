@@ -36,3 +36,6 @@ mvnw.cmd
 
 # Visual Studio Code
 .vscode/
+
+# docs
+docs/
